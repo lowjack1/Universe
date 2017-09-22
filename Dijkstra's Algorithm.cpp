@@ -1,54 +1,59 @@
-/* Using Priority Queue*/
-
 #include <bits/stdc++.h>
 
 using namespace std;
 
-vector < pair < int, int > > v[1000];
-int n;
+vector < pair < int, int > > v[100010];
 
-void dijk(int a)
+void dij(int a)
 {
-    priority_queue < pair < int, int >, vector < pair < int, int > >, greater < pair < int, int > > > pq;
-    vector < int > dist(n, 999999999);
+    priority_queue < pair < int, int >, vector < pair < int, int > > > pq;
     bool visited[10010] = {0};
+    vector < int > dist(100010, 0);
+    map < int, int > m;
 
     dist[a] = 0;
-    visited[a] = 1;
     pq.push({dist[a], a});
-
+    m[a] = -1;
     while(!pq.empty()) {
         pair < int, int > d = pq.top();
         int u = d.second;
-        visited[u] = 1;
         pq.pop();
-        for(int i = 0; i < int(v[u].size()); i ++) {
-            int x = v[u][i].first;
-            int w = v[u][i].second;
-            if(visited[x] == 0 and (dist[x] > (dist[u] + w))) {
-                dist[x] = dist[u] + w;
-                pq.push({dist[x], x});
+        visited[u] = 1;
+        for(auto x : v[u]) {
+            if(visited[x.first] == 0 and (dist[x.first] <= dist[u] + x.second)) {
+                dist[x.first] = dist[u] + x.second;
+                pq.push({dist[x.first], x.first});
+                m[x.first] = u;
             }
         }
     }
-    for(int i = 0; i < n; i ++) {
+    /* Printing Path */
+    for(int i = 0; i < 9; i ++) {
         cout << i << " " << dist[i] << "\n";
+        int d = i;
+        cout << d << " ";
+        while(m[d] != -1) {
+            cout << m[d] << " ";
+            d = m[d];
+        }
+        cout << "\n\n";
     }
 }
 
 int main()
 {
-    cin >> n;
-    int u;
-    for(int i = 0; i < n; i ++) {
+    ios_base :: sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int n, m;
+    cin >> n >> m;
+    for(int i = 0; i < m; i ++) {
         int x, y, z;
         cin >> x >> y >> z;
         v[x].push_back({y, z});
         v[y].push_back({x, z});
-        if(i == 0) {
-            u = x;
-        }
     }
-    dijk(u);
+    dij(0);
     return 0;
 }
