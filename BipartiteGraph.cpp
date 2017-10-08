@@ -23,8 +23,8 @@ void dfs(int node, int parent, int color)
 int main()
 {
     int n;
-    for(int i = 0; i < n - 1; i ++) {
     cin >> n;
+    for(int i = 0; i < n - 1; i ++) {
         int x, y;
         cin >> x >> y;
         v[x].push_back(y);
