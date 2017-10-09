@@ -6,7 +6,7 @@ vector < pair < int, int > > v[100010];
 
 void dij(int a)
 {
-    priority_queue < pair < int, int >, vector < pair < int, int > > > pq;
+    priority_queue < pair < int, int >, vector < pair < int, int > >, greater < pair < int, int > > > pq;
     bool visited[10010] = {0};
     vector < int > dist(100010, 0);
     map < int, int > m;
