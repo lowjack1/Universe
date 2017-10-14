@@ -55,6 +55,10 @@ int euler(int n)
             odd ++;
         }
     }
+    
+    if(odd > 2) {
+        return 0;
+    }
     return (odd) ? 1 : 2;
 }
 
