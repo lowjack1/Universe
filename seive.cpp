@@ -1,12 +1,7 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
-using ll = long long;
-const int N = 87000008;
-
-ll mark[N];
-ll prime[N];
+                                        /* Normal Seive */
+const int N = 87000000;
+bool mark[N];
+int prime[N];
 
 void seive()
 {
@@ -14,7 +9,7 @@ void seive()
     for(int i = 2; i * i <= 87000000; i ++) {
         if(mark[i] == 0) {
             for(int j = i * 2; j <= 87000000; j += i) {
-                mark[j] = -1;
+                mark[j] = 1;
             }
         }
     }
@@ -25,18 +20,25 @@ void seive()
     }
 }
 
-int main() 
+=============================================================================================================================================
+                            /* Simple Sieve with some optimization Avoiding all even numbers */
+bool mark[N / 2];
+int prime[N];
+
+void seive()
 {
-    ios_base :: sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    seive();
-    int t;
-    cin >> t;
-    while(t --) {
-        int n;
-        cin >> n;
-        cout << prime[n - 1] << "\n";
+    int o = 0;
+    prime[o ++] = 2;
+    for(int i = 3; i * i < 87000000; i += 2) {
+        if(mark[i / 2] == 0) {
+            for(int j = i * i; j < 87000000; j += i * 2) {
+                mark[j / 2] = 1;
+            }
+        }
     }
-    return 0;
+    for(int i = 3; i <= 87000000; i +=2) {
+        if(mark[i / 2] == 0) {
+            prime[o ++] = i;
+        }
+    }
 }
