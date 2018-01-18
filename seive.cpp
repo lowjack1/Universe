@@ -42,3 +42,24 @@ void seive()
         }
     }
 }
+
+===============================================================================================================================
+
+const int N = 87000008;
+vector < int > prime;
+bool mark[N];
+
+void seive()
+{
+    for(int i = 2; i < N; i ++) {
+        if(!mark[i]) {
+            prime.push_back(i);
+        }
+        for(int j = 0; j < prime.size() and i * prime[j] < N; j ++) {
+            mark[i * prime[j]] = 1;
+            if(i % prime[j] == 0) {
+                break;
+            }
+        }
+    }
+}
