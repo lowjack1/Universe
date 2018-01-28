@@ -13,17 +13,15 @@ void LPS(string pattern)
     int i = 1;
     int len = 0;
     while(i < m) {
-        if(pattern[i] == patern[len]) {
-            lps[i] = ++len;
-            i ++;
+        if(pattern[i] == pattern[len]) {
+            lps[i ++] = ++len;
         }
         else {
             if(len != 0) {
                 len = lps[len - 1];
             }
             else {
-                lps[i] = 0;
-                i ++;
+                lps[i ++] = 0;
             }
         }
     }
@@ -32,7 +30,7 @@ void LPS(string pattern)
 void KMP(string text, string pattern) 
 {
     int m = pattern.length();
-    int n = text.lenth();
+    int n = text.length();
     
     LPS(pattern);
 
