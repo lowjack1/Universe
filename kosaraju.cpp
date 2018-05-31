@@ -1,5 +1,5 @@
-vector < int > v[10004];
-vector < int > v1[10004];
+vector < int > v[10005];
+vector < int > v1[10005];
 
 int vis1[10004];
 int vis2[10004];
