@@ -1,8 +1,7 @@
-vector < int > v[10005];
-vector < int > v1[10005];
+vector < int > v[100004];
+vector < int > v1[100004];
 
-int vis1[10004];
-int vis2[10004];
+int vis1[100004];
 
 stack < int > s;
 
@@ -17,10 +16,11 @@ void dfs(int s1) {
 }
 
 void dfs1(int s) {
-    vis2[s] =  1;
-    cout << s + 1 << " ";
+    vis1[s] = 2;
+    
+    cout << s + 1, sp;
     for(auto x: v1[s]) {
-        if(!vis2[x]) {
+        if(vis1[x] <= 1) {
             dfs1(x);
         }
     }
@@ -35,21 +35,16 @@ void kosaraju(int n)
         }
     }
 
-    for(int i = 0; i < n; i ++) {
-        for(auto x: v[i]) {
-            v1[x].pb(i);
-        }
-    }
-
     while(!s.empty()) {
         int p = s.top();
         s.pop();
-        if(!vis2[p]) {
+        if(vis1[p] <= 1) {
             dfs1(p);
-            nl;
+            cout << "\n";
         }
     }
 }
+
 int main ()
 {
     fast;
@@ -60,7 +55,8 @@ int main ()
         int x, y;
         cin >> x >> y;
         x --, y --;
-        v[x].push_back(y);
+        v[x].pb(y);
+        v1[y].pb(x);
     }
 
     kosaraju(n);
