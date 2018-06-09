@@ -16,6 +16,11 @@
 4 5 1
 */
 
+
+/*  0-1 BFS is nothing but a special case of Dijkstra’s Algorithm which can only be 
+    applied on Graph with vertices weighted 0 and x(x>=0) only.
+*/
+
 #include <bits/stdc++.h>
  
 using namespace std;
@@ -30,7 +35,6 @@ void bfs(int n, int source)
         dist[i] = inf;
     }
     dist[source] = 0;
-    bool visited[n + 1] = {0};
 
     deque < pair < int, int > > dq;
     dq.push_front({source, 0});
@@ -38,12 +42,14 @@ void bfs(int n, int source)
     while(!dq.empty()) {
         pair < int, int > p = dq.front();
         dq.pop_front();
-        visited[p.first] = 1;
         for(auto x: v[p.first]) {
-            dist[x.first] = min(dist[x.first], dist[p.first] + x.second);
-            if(not visited[x.first]) {
-                if(x.second == 0) dq.push_front(x);
-                else if(x.second == 1) dq.push_back(x);
+            if(dist[x.first] > dist[p.first] and x.second == 0) {
+                dist[x.first] = dist[p.first];
+                dq.push_front(x);
+            }
+            else if(dist[x.first] > dist[p.first] + 1 and x.second == 1) {
+                dist[x.first] = dist[p.first] + 1;
+                dq.push_back(x);
             }
         }
     }
@@ -52,6 +58,7 @@ void bfs(int n, int source)
         cout << dist[i] << " ";
     }
 }
+
 int main ()
 {
     int n, m;
