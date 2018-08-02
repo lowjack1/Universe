@@ -52,3 +52,31 @@ void calculate(int a, int b) // calculating prime divisor of all number in a giv
         }
     }
 }
+
+// Mobius Function
+int mu[N];
+vector < int > divs[N];
+
+void init()
+{
+    for(int i = 2; i < N; i ++) {
+        for(int j = i; j < N; j += i) {
+            divs[j].pb(i);
+        }
+    }
+    mu[1] = 1;
+    for(int i = 2; i < N; i ++) {
+        if(divs[i].size() == 2) {
+            mu[i] = -1;
+        }
+        else {
+            int p = divs[i][1]; // smallest prime divisior
+            if((i / p) % p == 0) {
+                mu[i] = 0;
+            }
+            else {
+                mu[i] = mu[i / p] * -1;
+            }
+        }
+    }
+}
