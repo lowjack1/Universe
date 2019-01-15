@@ -40,6 +40,6 @@ int main()
    		cout << s.top() << " ";
    		s.pop();
    	}
-   cout << "\n";
-   return 0;
+    cout << "\n";
+    return 0;
 }
