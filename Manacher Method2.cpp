@@ -1,69 +1,26 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string.h>
 
 using namespace std;
 
-#define M 			50005
-#define Fi			first
-#define stop 		return
-#define Se 			second
-#define S(n) 		cin >> n
-#define P(n) 	 	cout << n
-#define mp 			make_pair
-#define pb 			push_back
-#define pp 			pop_back
-#define pf 			pop_front
-#define start 		int main()
-#define space 		cout << " "
-#define new_line 	cout << "\n"
-#define	mem(n, i)	memset((n), (i), sizeof(n))
-#define deci(n)		cout << fixed << setprecision(n)
-#define F(i, n, r)  for(int i = (n); i < (r); i ++)
-#define PI			3.14159265358979323846264338327951
-#define fast 		ios_base:: sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-
-typedef long long 			ll;
-typedef set < int > 		st;
-typedef stringstream 		ss;
-typedef vector < ll > 		vl;
-typedef vector < int > 		vi;
-typedef map < ll, ll > 		ml;
-typedef pair <int, int> 	p;
-typedef vector < string > 	vs;
-typedef map < string, ll > 	ms;
-typedef map < string, int > mi;
-typedef vector < p > 		vp;
-typedef unsigned long long  ull;
-
-template < typename T > inline T LCM(T a, T b) 		 { return (a * b) / GCD(a, b); }
-template < typename T > inline T GCD(T a, T b) 		 { ll t; while(a) { t = a; a = b % a; b = t; } return b; }
-template < typename T > inline T _max(T a, T b, T c) { return max( max( a, b ), c ); }
-template < typename T > inline T _min(T a, T b, T c) { return min( min( a, b ), c ); }
-
-const int inf 	  = 123456789;
-const int neg_inf = -123456789;
-
-start
+int main()
 {
 	string s1 = "", s2;
-	S(s2);
-	
-	// Length of inputted string
-	ll l = s2.length();
+	cin >> s2;
 	
 	// Making new string
-	F(i, 0, l) {
+	for(int i = 0; i < s2.length(); i ++) {
 		s1 += '*';
 		s1 += s2[i];
 	}
 	s1 += '*';
 	
-	// Updating lenth of string
-	l = s1.length();
+	// length of inputted string
+	int l = s1.length();
 	
 	int L[l]; // Array for Palindromic length
 	L[0] = 1; /* since at 0th position there is '*' only so there is a palindome of length 1 */ 
 	L[1] = 3; /* since at 1th position there is a digit so there is a palindrome of length 3 i.e., *digit* */
-	
 	
 	/*
 	* cc = center 
@@ -82,7 +39,7 @@ start
     
 	bool expand = 0;
 	// Applying Manacher Algorithm
-	F(i, 2, l) {
+	for(int i = 2; i < l; i ++) {
 		L[i] = 0;
 		expand = 0;
 		iMirror = 2 * cc - i;
@@ -126,9 +83,9 @@ start
 			maxLpsCenter = cc;
 		}
 	}
-	P(maxLen), new_line;
+	cout << maxLen << "\n";
 	int strt = (maxLpsCenter - maxLen) / 2;
 	int end = maxLen;
-	P(s2.substr(strt, end));
-	stop 0;
+	cout << s2.substr(strt, end) << "\n";
+	return 0;
 }
