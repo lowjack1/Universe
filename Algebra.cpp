@@ -1,9 +1,11 @@
-bool flag;
+#include <iostream>
+#include <string.h>
+
+using namespace std;
 
 string add(string s1, string s2)
 {
     string s3 = "";
-
     int i = int(s1.length()) - 1;
     int j = int(s2.length()) - 1;
     int carry = 0;
@@ -34,27 +36,40 @@ string add(string s1, string s2)
     return s3;
 }
 
-string sub(string s1, string s2)
+string substract(string s1, string s2)
 {
+	bool flag = 0;
     if(s1 == s2) {
         return "0";
     }
-    if(s2.length() > s1.length()) {
-        flag = 1;
-        swap(s1, s2);
-    }
-    else if(s1.length() == s2.length()){
-        int i = 0;
-        while(i < s1.length()) {
-            if(s1[i] < s2[i]) {
-                flag = 1;
-                break;
-            }
-            i --;
+    if(s1.length() == s2.length()) {
+        int a = s1[0] - '0';
+        int b = s2[0] - '0';
+        if(a - b < 0) {
+        	flag = 1;
+        }
+        else if(a - b == 0) {
+        	int i = 1;
+        	while(i < s1.length()) {
+        		a = s1[i] - '0';
+        		b = s2[i] - '0';
+        		if(b > a) {
+        			flag = 1;
+        			break;
+        		}
+        		else if(b < a) {
+        			break;
+        		}
+        		i ++;
+        	}
         }
         if(flag) {
-            swap(s1, s2);
+        	swap(s1, s2);
         }
+    }
+    else if(s2.length() > s1.length()) {
+        flag = 1;
+        swap(s1, s2);
     }
     string s3 = "";
 
@@ -73,7 +88,7 @@ string sub(string s1, string s2)
             char c = (10 + a - b) + '0';
             s3 = c + s3;
             int k = i - 1;
-            while(s1[k] == '0') {
+            while(s1[k] == '0' and k >= 0) {
                 s1[k] = '9';
                 k --;
             }
@@ -93,7 +108,7 @@ string sub(string s1, string s2)
     if(i == n) {
         return "0";
     }
-    return s3.substr(i, n);
+    return (flag) ? "-" + s3.substr(i, n): s3.substr(i, n);
 }
 
 // Used as a utility function for multiplication
@@ -119,7 +134,7 @@ string multi(string s1, int d, int o)
 }
 
 
-string mult(string s1, string s2)
+string multiply(string s1, string s2)
 {
     if(s1 == "0" or s2 == "0") {
         return "0";
@@ -149,4 +164,13 @@ string mult(string s1, string s2)
         return "0";
     }
     return s4.substr(i, n);
+}
+
+
+int main() 
+{
+	cout << add("13985739723423423424242423", "9873407878483479234739472384") << "\n";
+	cout << substract("393475983453457345999", "1345938475937220380820") << "\n";
+	cout << multiply("13985739723423423424242423", "9873407878483479234739472384") << "\n";
+	return 0;
 }
