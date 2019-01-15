@@ -8,7 +8,6 @@ Some of the Algorithms are
   <li> Euler path in undirected graph </li>
   <li> Kadane's Alogrithm </li>
   <li> Lowest Common Ancestor </li>
-  <li> Prim's Algorithm </li>
   <li> Line Sweep Algorithm </li>
   <li> Square Root Decomposition </li>
   <li> Prim's Algorithm </li>
