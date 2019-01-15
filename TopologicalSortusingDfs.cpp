@@ -1,3 +1,10 @@
+#include <iostream>
+#include <vector>
+#include <stack>
+#include <string.h>
+
+using namespace std;
+
 vector < int > v[100];
 bool visited[100];
 stack < int > s;
@@ -14,8 +21,7 @@ void dfs(int n)
 }
 
 int main()
-{ 
-    fast;
+{
    	int n, m;
    	cin >> n >> m;
    	for(int i = 0; i < m; i ++) {
