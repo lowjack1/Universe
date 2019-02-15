@@ -1,6 +1,6 @@
-/* Implementation of left leaning Red Black tree */
-
-/* color of Node is true if the link from the parent is Red */
+/* Implementation of left leaning Red Black tree
+   color of Node is true if the link from the parent is Red 
+*/
 
 #include <bits/stdc++.h>
 
