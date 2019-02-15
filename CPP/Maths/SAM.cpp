@@ -1,6 +1,14 @@
+/*input
+393475983453457345999
+1345938475937220380820
+*/
+
+/* 
+	Program for Substraction, Addition, and Multiplication (SAM) of very large number.   
+*/ 
+
 #include <iostream>
 #include <string.h>
-
 
 std::string add(std::string s1, std::string s2)
 {
@@ -168,8 +176,18 @@ std::string multiply(std::string s1, std::string s2)
 
 int main() 
 {
-	std::cout << add("13985739723423423424242423", "9873407878483479234739472384") << "\n";
-	std::cout << substract("393475983453457345999", "1345938475937220380820") << "\n";
-	std::cout << multiply("13985739723423423424242423", "9873407878483479234739472384") << "\n";
+    std::string num1, num2;
+    std::cin >> num1 >> num2;
+	std::cout << add(num1, num2) << "\n";
+	std::cout << substract(num1, num2) << "\n";
+	std::cout << multiply(num1, num2) << "\n";
 	return 0;
 }
+
+/*  Expected Output
+
+    1739414459390677726819
+    -952462492483763034821
+    529594465487245324807214724087809283339180
+
+*/

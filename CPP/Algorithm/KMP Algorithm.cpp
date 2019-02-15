@@ -3,7 +3,7 @@ aaaaaab
 aaa
 */
 
-/*  Pattern Matching Alogrithm
+/*  Pattern Searching Alogrithm
     Time Complexity: O(n)
 */
 #include <iostream>
