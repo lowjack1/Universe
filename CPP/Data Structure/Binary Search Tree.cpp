@@ -1,9 +1,7 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 template < typename T > class BST;
-
 template < typename T > class node {
     friend class BST < T > ;
     private:
