@@ -34,10 +34,10 @@ int func(int n, int k)
     if(k == 0) {
         return mp[s] = max({func(n - 1, k), v[n - 1] + func(n - 1, 1), v[n - 1] + func(n - 1, 2)});
     }
-    else if(k == 1) {
+    if(k == 1) {
         return mp[s] = max(v[n - 1] + func(n - 1, k), v[n - 1] + func(n - 1, 2));
     }
-    else if(k == 2) {
+    if(k == 2) {
         return mp[s] = func(n - 1, k);
     }
 }
