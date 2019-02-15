@@ -1,7 +1,5 @@
 #include <stdio.h>
-
 extern void _exit(register int);
-
 int _start()
 {
 	int n;
