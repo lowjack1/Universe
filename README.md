@@ -1,5 +1,5 @@
 # Universe
-Universe provides solution to major Algorithms which are mplemented in C++. <br> <br>
+Universe provides solution to major Algorithms which are implemented in C++. <br> <br>
 Some of the Algorithms are
 <ul>
   <li> Bidirectional Search </li>
