@@ -3,11 +3,9 @@
 #include <stack>
 #include <string.h>
 
-using namespace std;
-
-vector < int > v[100];
+std::vector < int > v[100];
 bool visited[100];
-stack < int > s;
+std::stack < int > s;
 
 void dfs(int n)
 {
@@ -23,10 +21,10 @@ void dfs(int n)
 int main()
 {
    	int n, m;
-   	cin >> n >> m;
+   	std::cin >> n >> m;
    	for(int i = 0; i < m; i ++) {
    		int x, y;
-   		cin >> x >> y;
+   		std::cin >> x >> y;
    		v[x].push_back(y);
    	}
 
@@ -37,9 +35,9 @@ int main()
    	}
 
    	while(!s.empty()) {
-   		cout << s.top() << " ";
+   		std::cout << s.top() << " ";
    		s.pop();
    	}
-    cout << "\n";
+    std::cout << "\n";
     return 0; 
 }

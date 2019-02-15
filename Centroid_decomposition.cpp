@@ -16,27 +16,28 @@
 10 12
 */
 
-/* Centroid Decomposition or Seperator Decomposition */
-/* sub    = subtree size */
-/* tree   = Centroid Tree */
-/* par[i] = parent of ith node in centroid tree */
+/*  Centroid Decomposition or Seperator Decomposition
+    sub    = subtree size
+    tree   = Centroid Tree
+    par[i] = parent of ith node in centroid tree 
+*/
 
-#include <bits/stdc++.h> 
-
-using namespace std;
+#include <iostream>
+#include <vector>
+#include <string.h>
 
 const int N = 10005;
 
-vector < int > v[N];
-vector < int > sub(N);
-vector < int > tree[N];
+std::vector < int > graph[N];
+std::vector < int > sub(N);
+std::vector < int > tree[N];
 int par[N];
 
 /* Function for calculating the size of each subtree */
 int dfs(int u, int p)
 {
     sub[u] = 1;
-    for(auto x: v[u]) {
+    for(auto x: graph[u]) {
         if(x != p and par[x] == -1) {
             sub[u] += dfs(x, u);
         }
@@ -47,7 +48,7 @@ int dfs(int u, int p)
 /* Function to find the centroid of a tree rooted at node u and has parent p */
 int centroid(int u, int p, int n)
 {
-    for(auto x: v[u]) {
+    for(auto x: graph[u]) {
         if(x != p and sub[x] > n / 2 and par[x] == -1) {
             return centroid(x, u, n);
         } 
@@ -71,7 +72,7 @@ int make(int u, int p)
         p = centroid_root;
     }
     par[centroid_root] = p;
-    for(auto x: v[centroid_root]) {
+    for(auto x: graph[centroid_root]) {
         if(par[x] == -1) {
             int centroid_subtree = make(x, centroid_root);
             tree[centroid_root].push_back(centroid_subtree);
@@ -84,28 +85,28 @@ int make(int u, int p)
 int main()
 {
     int n;
-    cin >> n;
+    std::cin >> n;
     memset(par, -1, sizeof(par));
     for(int i = 1; i < n; ++ i) {
         int x, y;
-        cin >> x >> y;
+        std::cin >> x >> y;
         x --, y --;
-        v[x].push_back(y);
-        v[y].push_back(x);
+        graph[x].push_back(y);
+        graph[y].push_back(x);
     }
     make(0, -1);
     
     /* Output Centroid Tree */
     for(int i = 0; i < n; i ++) {
-        cout << i + 1 << " -> ";
+        std::cout << i + 1 << " -> ";
         for(auto x: tree[i]) {
-            cout << x + 1 << " ";
+            std::cout << x + 1 << " ";
         }
-        cout << "\n";
+        std::cout << "\n";
     } 
 
     for(int i = 0; i < n; i ++) {
-        cout << par[i] + 1 << " ";
+        std::cout << par[i] + 1 << " ";
     }
     return 0;
 }

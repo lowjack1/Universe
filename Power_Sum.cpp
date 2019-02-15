@@ -1,4 +1,5 @@
-/*  
+/*  Stirling Alogrithm
+
     x^k = sum (i = 1 to k) {k, i} * i! * ncr(x, i)
     sum (x = 0 to n) x^k
             = sum (i = 0 to k) {k, i} * i! * sum (x = 0 to n) nCr(x, i)
@@ -9,21 +10,12 @@
     {k, i} = Stirling Number of Second Kind = {k - 1, i - 1} + i * {k - 1, i}
 
     Assuming x <= 1e18 and k <= 1e3
+    
+    Time Complexity: O(k*K)
 */
 
-#include <algorithm>
 #include <iostream>
 #include <string.h>
-#include <stdlib.h>
-#include <iomanip>
-#include <utility>
-#include <vector>
-#include <queue>
-#include <stack>
-#include <map>
-#include <set>
-
-using namespace std;
 
 using ll = long long;
 
@@ -36,7 +28,7 @@ inline ll mul(ll x, ll y) { return ((x % mod) * (y % mod)) % mod; }
 int main()
 {
     ll x = 10, k = 10;
-    cin >> x >> k;
+    std::cin >> x >> k;
 
     ll S[1002][1002];
     memset(S, 0, sizeof(S));
@@ -60,6 +52,6 @@ int main()
         }
         ans = add(ans, mul(res, S[k][i]));
     }
-    cout << ans;
+    std::cout << ans;
     return 0;
 }

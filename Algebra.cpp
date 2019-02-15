@@ -1,11 +1,10 @@
 #include <iostream>
 #include <string.h>
 
-using namespace std;
 
-string add(string s1, string s2)
+std::string add(std::string s1, std::string s2)
 {
-    string s3 = "";
+    std::string s3 = "";
     int i = int(s1.length()) - 1;
     int j = int(s2.length()) - 1;
     int carry = 0;
@@ -36,7 +35,7 @@ string add(string s1, string s2)
     return s3;
 }
 
-string substract(string s1, string s2)
+std::string substract(std::string s1, std::string s2)
 {
 	bool flag = 0;
     if(s1 == s2) {
@@ -71,7 +70,7 @@ string substract(string s1, string s2)
         flag = 1;
         swap(s1, s2);
     }
-    string s3 = "";
+    std::string s3 = "";
 
     int i = int(s1.length()) - 1;
     int j = int(s2.length()) - 1;
@@ -112,9 +111,9 @@ string substract(string s1, string s2)
 }
 
 // Used as a utility function for multiplication
-string multi(string s1, int d, int o)
+std::string multi(std::string s1, int d, int o)
 {
-    string s2 = "";
+    std::string s2 = "";
     int carry = 0;
     for(int i = s1.length() - 1; i >= 0; -- i) {
         int c = (s1[i] - '0') * d + carry;
@@ -134,7 +133,7 @@ string multi(string s1, int d, int o)
 }
 
 
-string multiply(string s1, string s2)
+std::string multiply(std::string s1, std::string s2)
 {
     if(s1 == "0" or s2 == "0") {
         return "0";
@@ -143,10 +142,10 @@ string multiply(string s1, string s2)
         swap(s1, s2);
     }
     int o = 0;
-    string s4 = "";
+    std::string s4 = "";
     for(int i = s2.length() - 1; i >= 0; -- i) {
         int d = s2[i] - '0';
-        string s3 = multi(s1, d, o);
+        std::string s3 = multi(s1, d, o);
         if(!o) {
             s4 = s3;
         }
@@ -169,8 +168,8 @@ string multiply(string s1, string s2)
 
 int main() 
 {
-	cout << add("13985739723423423424242423", "9873407878483479234739472384") << "\n";
-	cout << substract("393475983453457345999", "1345938475937220380820") << "\n";
-	cout << multiply("13985739723423423424242423", "9873407878483479234739472384") << "\n";
+	std::cout << add("13985739723423423424242423", "9873407878483479234739472384") << "\n";
+	std::cout << substract("393475983453457345999", "1345938475937220380820") << "\n";
+	std::cout << multiply("13985739723423423424242423", "9873407878483479234739472384") << "\n";
 	return 0;
 }

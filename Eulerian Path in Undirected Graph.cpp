@@ -1,9 +1,9 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
-vector < int > v[1000];
-bool visited[1000];
+#include <iostream>
+#include <vector>
+#include <string.h>
+const int N = 1001;
+std::vector < int > v[N];
+bool visited[N];
 
 void dfs(int s)
 {
@@ -65,24 +65,24 @@ int euler(int n)
 int main()
 {
     int m, n;
-    cin >> n >> m;
+    std::cin >> n >> m;
     
     for(int i = 0; i < n ; i ++) {
         int x, y;
-        cin >> x >> y;
+        std::cin >> x >> y;
         v[x].push_back(y);
         v[y].push_back(x);
     }
     
-    int d = euler(n);
-    if(d == 0) {
-        cout << "No eulerian path ";
+    int flag = euler(n);
+    if(not flag) {
+        std::cout << "No eulerian path ";
     }
     else if(d == 1) {
-        cout << "Eulerian Path but no eulerian cycle";
+        std::cout << "Eulerian Path but no eulerian cycle";
     }
     else {
-        cout << "Eulerian Cycle";
+        std::cout << "Eulerian Cycle";
     }
     return 0;
 }

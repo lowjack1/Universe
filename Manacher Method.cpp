@@ -1,12 +1,18 @@
+/*input
+bacaabababababbba
+*/
+
+/*  Manacher's Algorithm is used to find Longest Palindromic Substring in Linear Time
+	Time Complexity: O(n)
+*/
+
 #include <iostream>
 #include <string.h>
 
-using namespace std;
-
 int main()
 {
-	string s1 = "", s2;
-	cin >> s2;
+	std::string s1 = "", s2;
+	std::cin >> s2;
 	
 	// Making new string
 	for(int i = 0; i < s2.length(); i ++) {
@@ -83,9 +89,16 @@ int main()
 			maxLpsCenter = cc;
 		}
 	}
-	cout << maxLen << "\n";
+	std::cout << "Length of Longest Palindromic Substring is ";
+	std::cout << maxLen << "\n";
 	int strt = (maxLpsCenter - maxLen) / 2;
 	int end = maxLen;
-	cout << s2.substr(strt, end) << "\n";
+	std::cout << "String is ";
+	std::cout << s2.substr(strt, end) << "\n";
 	return 0;
 }
+
+/*  Expected Output
+	Length of Longest Palindromic Substring is 9
+	String is ababababa
+*/

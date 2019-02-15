@@ -1,13 +1,36 @@
-#include <bits/stdc++.h>
+/*input
+9 14
+1 2 4
+2 3 8
+3 4 7
+4 5 9
+5 6 10
+6 7 2
+7 8 1
+8 1 8
+8 2 11
+8 9 7
+7 9 6
+9 3 2
+3 6 4
+4 6 14
+*/
 
-using namespace std;
+/*  Algorithm to find Minimum Cost Spanning Tree.
+    Time Complexity: O(ElogE)
+*/
 
-vector < pair < int, pair < int, int > > > v;
+#include <iostream>
+#include <vector>
+#include <map>
+#include <algorithm>
+
+std::vector < std::pair < int, std::pair < int, int > > > v;
 class Disjoint {
-    map < int, int > parent;
-    map < int, int > rank;
+    std::map < int, int > parent;
+    std::map < int, int > rank;
 public:
-    void make_set(vector < int > &v) {
+    void make_set(std::vector < int > &v) {
         for(int i: v) {
             parent[i] = i;
             rank[i] = 0;
@@ -42,7 +65,7 @@ public:
 
 int Kruskal(int n)
 {
-    vector < int > vp;
+    std::vector < int > vp;
     Disjoint ds;
     for(int i = 1; i <= n; i ++) {
         vp.push_back(i);
@@ -57,7 +80,7 @@ int Kruskal(int n)
         int set_v = ds.Find(v);
         
         if(set_u != set_v) {
-            cout << u << " " << v << "\n";
+            std::cout << u << " " << v << "\n";
             ds.Union(set_u, set_v);
             mst += x.first;
         }
@@ -68,13 +91,30 @@ int Kruskal(int n)
 int main()
 {
     int n, m;
-    cin >> n >> m;
+    std::cin >> n >> m;
     for(int i = 0; i < m; i ++) {
         int x, y, z;
-        cin >> x >> y >> z;
+        std::cin >> x >> y >> z;
         v.push_back({z, {x, y}});
     }
-    sort(v.begin(), v.end());
-    cout << Kruskal(n) << "\n";
+    std::sort(v.begin(), v.end());
+    std::cout << "Spanning Tree is \n";
+    int minCost = Kruskal(n); 
+    std::cout << "Minimum cost is " << minCost << "\n";
     return 0;
 }
+
+/*  Expected Output
+
+    Spanning Tree is 
+    7 8
+    6 7
+    9 3
+    1 2
+    3 6
+    3 4
+    2 3
+    4 5
+    Minimum cost is 37
+    
+*/

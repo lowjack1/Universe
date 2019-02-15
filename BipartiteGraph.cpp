@@ -1,9 +1,9 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <set>
 
-using namespace std;
-
-vector < int > v[100005];
-set < int > s1, s2;
+std::vector < int > graph[100005];
+std::set < int > s1, s2;
 
 void dfs(int node, int parent, int color)
 {
@@ -13,7 +13,7 @@ void dfs(int node, int parent, int color)
     else if(color % 2 == 0) {
         s2.insert(node);
     }
-    for(auto u : v[node]) {
+    for(auto u : graph[node]) {
         if(u != parent) {
             dfs(u, node, (color + 1) % 2);
         }
@@ -23,21 +23,24 @@ void dfs(int node, int parent, int color)
 int main()
 {
     int n;
-    cin >> n;
-    for(int i = 0; i < n - 1; i ++) {
+    std::cin >> n;
+    for(int i = 1; i < n; i ++) {
         int x, y;
-        cin >> x >> y;
-        v[x].push_back(y);
-        v[y].push_back(x);
+        std::cin >> x >> y;
+        graph[x].push_back(y);
+        graph[y].push_back(x);
     }
 
-    dfs(1, 0, 0);
+    int source = 1;
+    int parent = 0;
+    int color = 0;
+    dfs(source, parent, color);
     for(auto x : s1) {
-        cout << x << " ";
+        std::cout << x << " ";
     }
-    cout << "\n";
+    std::cout << "\n";
     for(auto y : s2) {
-        cout << y << " ";
+        std::cout << y << " ";
     }
     return 0;
 }

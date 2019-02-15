@@ -2,11 +2,12 @@
 	Solving recurrence relation by matrix exponentiation
 	f(n) = f(n - 1) + f(n - 2) + 5
 	f(0) = f(1) = 1
+
+	Time Complexity: O(logn)
 */
 
 #include <iostream>
 #include <string.h>
-using namespace std;
 
 void multiply(int a[3][3], int b[3][3])
 {
@@ -46,15 +47,15 @@ void binary_exp(int a[3][3], int n)
 int main()
 {
 	int n;
-	cin >> n;
+	std::cin >> n;
 	if(n <= 2) {
-		cout << "1";
+		std::cout << "1";
 	}
 	else {
 		int a[3][3] = {{1, 1, 5}, {1, 0, 0}, {0, 0, 1}};
 		binary_exp(a, n - 2);
 		int d = a[0][0] * 1 + a[0][1] * 1 + a[0][2];
-		cout << d;
+		std::cout << d;
 	}
 	return 0;
 }

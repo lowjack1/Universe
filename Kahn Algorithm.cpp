@@ -1,19 +1,35 @@
-vector < int > v[10005];
-map < int, int > indegree;
+/*input
+5 5
+1 3
+2 3
+3 4
+3 5
+5 4
+*/
+/* Topological Sorting in a Direct Acyclic Graph
+   Time Complexity: O(V+E)
+*/
+
+#include <iostream>
+#include <vector>
+#include <queue>
+
+const int N = 100001;
+std::vector < int > v[N];
+int indegree[N];
 
 void kahn(int n) 
 {
-    queue < int > q;
-    for(int i = 0; i < n; i ++) {
-        if(mp[i] == 0) {
+    std::queue < int > q;
+    for(int i = 1; i <= n; i ++) {
+        if(indegree[i] == 0) {
             q.push(i);
         }
     }
-    nl;
     while(!q.empty()) {
         int d = q.front();
         q.pop();
-        cout << d + 1 << " ";
+        std::cout << d << " ";
         for(auto x: v[d]) {
             indegree[x] --;
             if(indegree[x] == 0) {
@@ -25,19 +41,20 @@ void kahn(int n)
 
 int main ()
 {
-    fast;
     int n, m;
-    cin >> n >> m;
+    std::cin >> n >> m;
     
     for(int i = 0; i < m; i ++) {
         int x, y;
-        cin >> x >> y;
-        x --, y --;
+        std::cin >> x >> y;
         v[x].push_back(y);
         indegree[y] ++;
     }
 
-    kahn(n);    
-    
+    kahn(n);
     return 0;
 }
+
+/* Expected Output
+   1 2 3 5 4
+*/

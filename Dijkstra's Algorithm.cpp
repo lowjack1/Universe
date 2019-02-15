@@ -16,26 +16,33 @@
 4 5 10
 */
 
-#include <bits/stdc++.h>
+/*  Algorithm to find shortest distance from source to all vertices.
+    Time Complexity O(ElogV)
 
-using namespace std;
+*/
 
-vector < pair < int, int > > v[100010];
-const int N = 1e9 - 1;
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <map>
+#include <utility>
+
+std::vector < std::pair < int, int > > v[100010];
+const int N = 1e9;
 int n;
 
 void dij(int a)
 {
-    priority_queue < pair < int, int >, vector < pair < int, int > >, greater < pair < int, int > > > pq;
+    std::priority_queue < std::pair < int, int >, std::vector < std::pair < int, int > >, std::greater < std::pair < int, int > > > pq;
     bool visited[10010] = {0};
-    vector < int > dist(100010, N);
-    map < int, int > m;
+    std::vector < int > dist(100010, N);
+    std::map < int, int > m;
 
     dist[a] = 0;
     pq.push({dist[a], a});
     m[a] = -1;
     while(!pq.empty()) {
-        pair < int, int > d = pq.top();
+        std::pair < int, int > d = pq.top();
         int u = d.second;
         pq.pop();
         visited[u] = 1;
@@ -49,28 +56,24 @@ void dij(int a)
     }
     /* Printing Path */
     for(int i = 0; i < n; i ++) {
-        cout << i << " " << dist[i] << "\n";
+        std::cout << i << " " << dist[i] << "\n";
         int d = i;
-        cout << d << " ";
+        std::cout << d << " ";
         while(m[d] != -1) {
-            cout << m[d] << " ";
+            std::cout << m[d] << " ";
             d = m[d];
         }
-        cout << "\n\n";
+        std::cout << "\n\n";
     }
 }
 
 int main()
 {
-    ios_base :: sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-
     int m;
-    cin >> n >> m;
+    std::cin >> n >> m;
     for(int i = 0; i < m; i ++) {
         int x, y, z;
-        cin >> x >> y >> z;
+        std::cin >> x >> y >> z;
         v[x].push_back({y, z});
         v[y].push_back({x, z});
     }

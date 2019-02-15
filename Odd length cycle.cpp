@@ -1,18 +1,22 @@
 /*
  * Graph is Bipartite, if it does not contain odd length cycle.
  * This algorithm is used to check whether a graph contain odd length cycle.
+ * 
+ * Time Complexity: O(V+E))
  */
  
-#include <bits/stdc++.h>
+#include <iostream>
+#include <queue>
+#include <string.h>
 
-using namespace std;
-
-vector < int > v[2010];
-int color[2010];
+const int N = 2000;
+std::vector < int > v[N];
+int color[N];
+bool flag;
 
 bool bfs(int s)  
 {
-    queue < int > q;
+    std::queue < int > q;
     q.push(s);
     color[s] = 1;
     bool flag = 0;
@@ -39,13 +43,13 @@ bool bfs(int s)
 int main()
 {
     int n, m;
-    cin >> n >> m;
+    std::cin >> n >> m;
     
     memset(color, 0, sizeof(color));
     
     for(int i = 0; i < m; i ++) {
         int x, y;
-        cin >> x >> y;
+        std::cin >> x >> y;
         v[x].push_back(y);
         v[y].push_back(x);
     }
@@ -53,17 +57,17 @@ int main()
     for(int i = 1; i <= n; i ++) {
         if(color[i] == 0) {
             bool f = bfs(i);
-            flag = max(f, flag);
+            flag = std::max(f, flag);
         }
     }
     
     if(flag) {
-        cout << "Graph is not Bipartite";
+        std::cout << "Graph is not Bipartite";
     }
     else {
-        cout << "Graph is Bipartite";
+        std::cout << "Graph is Bipartite";
     }
     
-    cout << "\n";
+    std::cout << "\n";
     return 0;
 }

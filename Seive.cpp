@@ -1,54 +1,48 @@
-                                        /* Normal Seive */
-const int NN = 87000000;
-bool mark[NN];
-vector < int > prime;
+#include <iostream>
+#include <vector>
 
+const int N = 87000000;
+bool mark[N];
+std::vector < int > prime;
+
+/* Implemntation of Normal Seive */
 void seive()
 {
-    for(int i = 2; i * i <= NN; i ++) {
+    for(int i = 2; i * i <= N; i ++) {
         if(mark[i] == 0) {
-            for(int j = i * 2; j <= NN; j += i) {
+            for(int j = i * 2; j < N; j += i) {
                 mark[j] = 1;
             }
         }
     }
-    for(int i = 2; i <= NN; i ++) {
+    for(int i = 2; i < N; i ++) {
         if(mark[i] == 0) {
             prime.push_back(i);
         }
     }
 }
 
-=============================================================================================================================================
-                            /* Simple Sieve with some optimization Avoiding all even numbers */
-const int NN = 87000000;
-bool mark[NN / 2];
-vector < int > prime;
-
-void seive()
+/* Simple Sieve with some optimization Avoiding all even numbers */
+bool mark2[N / 2];
+void optimizeSeive()
 {
-    prime.pb(2);
-    for(int i = 3; i * i < NN; i += 2) {
-        if(mark[i / 2] == 0) {
-            for(int j = i * i; j < NN; j += i * 2) {
-                mark[j / 2] = 1;
+    prime.push_back(2);
+    for(int i = 3; i * i < N; i += 2) {
+        if(mark2[i / 2] == 0) {
+            for(int j = i * i; j < N; j += i * 2) {
+                mark2[j / 2] = 1;
             }
         }
     }
-    for(int i = 3; i <= NN; i +=2) {
-        if(mark[i / 2] == 0) {
+    for(int i = 3; i <= N; i +=2) {
+        if(mark2[i / 2] == 0) {
             prime.push_back(i);
         }
     }
 }
 
-===============================================================================================================================
-
-const int N = 87000008;
-vector < int > prime;
-bool mark[N];
-
-void seive()
+/* A little more optimized Seive */
+void optSeive()
 {
     for(int i = 2; i < N; i ++) {
         if(!mark[i]) {
@@ -61,4 +55,16 @@ void seive()
             }
         }
     }
+}
+
+int main()
+{
+    seive();
+    int n = 10;
+    for(int i = 1; i < n; i ++) {
+        if(not mark[i]) {
+            std::cout << i << " ";
+        }
+    }
+    return 0;
 }

@@ -1,33 +1,34 @@
-#include <bits/stdc++.h>
+/*input
+aaaaaab
+aaa
+*/
 
-using namespace std;
+/*  Pattern Matching Alogrithm
+    Time Complexity: O(n)
+*/
+#include <iostream>
+#include <string>
 
 // LPS = Longest Propre Prefix Subsequence which is also a suffix
 const int N = 10000;
 int lps[N];
 
-void LPS(string pattern)
+void LPS(std::string pattern)
 {
-    int m = pattern.length();
+    int m = pattern.length(), i = 1, len = 0;
     lps[0] = 0;
-    int i = 1;
-    int len = 0;
     while(i < m) {
         if(pattern[i] == pattern[len]) {
             lps[i ++] = ++len;
         }
         else {
-            if(len != 0) {
-                len = lps[len - 1];
-            }
-            else {
-                lps[i ++] = 0;
-            }
+            if(!len) lps[i ++] = 0;
+            else len = lps[len - 1];
         }
     }
 }
 
-void KMP(string text, string pattern) 
+void KMP(std::string text, std::string pattern) 
 {
     int m = pattern.length();
     int n = text.length();
@@ -41,24 +42,29 @@ void KMP(string text, string pattern)
             j ++;
         }
         if(j == m) {
-            cout << i - j << " ";
+            std::cout << "Pattern found at index " << i - j + 1 << "\n";
             j = lps[j - 1];
         } 
         else if(i < n and pattern[j] != text[i]) {
-            if(j != 0) {
-                j = lps[j - 1];
-            }
-            else {
-                i ++;
-            }
+            if(!j) i ++;
+            else j = lps[j - 1];
         }
     }
 }
 
 int main()
 {
-    string pattern, text;
-    cin >> text >> pattern;
+    std::string pattern, text;
+    std::cin >> text >> pattern;
     KMP(text, pattern);
     return 0;
 }
+
+/*  Expected Output
+
+    Pattern found at index 1
+    Pattern found at index 2
+    Pattern found at index 3
+    Pattern found at index 4
+
+*/

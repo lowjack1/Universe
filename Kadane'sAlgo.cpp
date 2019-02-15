@@ -1,11 +1,19 @@
-/* For Maximum Sum in subarray */
+/*input
+4
+1 2 -1 10
+*/
 
-#include <bits/stdc++.h>
+/*  Algorithm to find mmaximum sum contigiuous subarray
+    Time Complexity: O(n)
+*/
+
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
 int n;
-vector < int > v;
+std::vector < int > v;
 
 int kadane()
 {
@@ -20,12 +28,17 @@ int kadane()
 
 int main()
 {
-    cin >> n;
+    std::cin >> n;
     for(int i = 0; i < n; i ++) {
         int x;
-        cin >> x;
+        std::cin >> x;
         v.push_back(x);
     }
-    cout << kadane() << "\n";
+
+    std::cout << kadane() << "\n";
     return 0;
 }
+
+/* Expected Output 
+   12
+*/

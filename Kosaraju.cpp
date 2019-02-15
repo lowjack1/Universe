@@ -1,9 +1,28 @@
-vector < int > v[100004];
-vector < int > v1[100004];
+/*input
+5 5
+2 1
+1 3
+3 2
+1 4
+4 5
+*/
 
-int vis1[100004];
+/*  Algorithm to Find all strongly connected components of a directed graph
+    Time Complexity: O(V+E)
+*/
 
-stack < int > s;
+#include <iostream>
+#include <vector>
+#include <stack>
+
+const int N = 100001;
+
+std::vector < int > v[N];
+std::vector < int > v1[N];
+
+int vis1[N];
+
+std::stack < int > s;
 
 void dfs(int s1) {
     vis1[s1] =  1;
@@ -18,7 +37,7 @@ void dfs(int s1) {
 void dfs1(int s) {
     vis1[s] = 2;
     
-    cout << s + 1, sp;
+    std::cout << s << " ";
     for(auto x: v1[s]) {
         if(vis1[x] <= 1) {
             dfs1(x);
@@ -29,7 +48,7 @@ void dfs1(int s) {
 
 void kosaraju(int n)
 {
-    for(int i = 0; i < n; i ++) {
+    for(int i = 1; i <= n; i ++) {
         if(!vis1[i]) {
             dfs(i);
         }
@@ -40,26 +59,31 @@ void kosaraju(int n)
         s.pop();
         if(vis1[p] <= 1) {
             dfs1(p);
-            cout << "\n";
+            std::cout << "\n";
         }
     }
 }
 
 int main ()
 {
-    fast;
     int n, m;
-    cin >> n >> m;
+    std::cin >> n >> m;
     
     for(int i = 0; i < m; i ++) {
         int x, y;
-        cin >> x >> y;
-        x --, y --;
-        v[x].pb(y);
-        v1[y].pb(x);
+        std::cin >> x >> y;
+        v[x].push_back(y);
+        v1[y].push_back(x);
     }
-
+    std::cout << "Components are \n";
     kosaraju(n);
-    nl;    
     return 0;
 }
+
+/*  Expected Output
+    
+    Components are 
+    1 2 3 
+    4 
+    5 
+*/
