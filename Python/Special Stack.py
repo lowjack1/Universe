@@ -67,7 +67,7 @@ class SpecialStack:
         ''' top element of stack '''
         return self.__stackTop
 
-    def size(self):
+    def __len__(self):
         ''' size of stack '''
         return self.__stackSize
 
@@ -78,6 +78,5 @@ stack = SpecialStack()
 stack.push(3)
 stack.push(5)
 print(stack.getMin())
-while stack.size() > 0:
+while len(stack) > 0:
     print(stack.pop())
-
