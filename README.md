@@ -1,5 +1,5 @@
 # Universe <br>
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)  <img src="https://img.shields.io/badge/Pull Requests%20Welcomed-violet.svg?style=flat-square" alt="pull requests are welcomed">  <img src="https://img.shields.io/badge/Language-C++%20Python%20-blue">
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)  <img src="https://img.shields.io/badge/Pull Requests%20Welcomed-green.svg?style=flat-square" alt="pull requests are welcomed">  <img src="https://img.shields.io/badge/Language-C++%20Python%20-blue">
 
 ***Universe provides solution to major Algorithms which are implemented in C++.***
 <br> <br>
@@ -7,8 +7,8 @@
 <ul>
   <li> <a href="CPP/Algorithm/Bidirectional Search.cpp"> Bidirectional Search </a> </li>
   <li> <a href="CPP/Algorithm/Centroid Decomposition.cpp"> Centroid Decomposition </a> </li>
-  <li> <a href="CPP/Algorithm/Dijkstra's Alogrithm.cpp"> Dijkstra's Algorithm </a> </li>
-  <li> <a href="CPP/Algorithm/Eulerian path in Undirected Graph.cpp"> Eulerian path in Undirected graph </a> </li>
+  <li> <a href="CPP/Algorithm/Dijkstra's Algorithm.cpp"> Dijkstra's Algorithm </a> </li>
+  <li> <a href="CPP/Algorithm/Eulerian Path in Undirected Graph.cpp"> Eulerian path in Undirected graph </a> </li>
   <li> <a href="CPP/Algorithm/Kadane's Algorithm.cpp"> Kadane's Algorithm </a> </li>
   <li> <a href="CPP/Algorithm/LCA.cpp"> Lowest Common Ancestor </a> </li>
   <li> <a href="CPP/Algorithm/Sweep Line.cpp"> Line Sweep Algorithm </a> </li>
