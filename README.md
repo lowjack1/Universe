@@ -3,8 +3,7 @@
 
 ***Universe provides solution to major Algorithms which are implemented in C++.***
 <br> <br>
-Some of the Algorithms are
-```
+### Some of the Algorithms are
 <ul>
   <li> <a href="CPP/Algorithm/Bidirectional Search.cpp"> Bidirectional Search </a> </li>
   <li> <a href="CPP/Algorithm/Centroid Decomposition.cpp"> Centroid Decomposition </a> </li>
@@ -25,7 +24,6 @@ Some of the Algorithms are
   <li> <a href="CPP/Algorithm/Moore's Voting Algorithm.cpp"> Boyre Moore Voting Algorithm </a> </li>
   <li> <a href="CPP/Algorithm/Sepa Algorithm.cpp"> Sepa Algorithm to generate all Permutation </a> </li>
 </ul>
-```
 
 ## Want to Contribute?
 
