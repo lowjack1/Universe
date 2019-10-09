@@ -1,7 +1,7 @@
 # Universe <br>
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)  <img src="https://img.shields.io/badge/Pull Requests%20Welcomed-red.svg?style=flat-square" alt="pull requests are welcomed">  <img src="https://img.shields.io/badge/Language-C++%20Python%20-blue">
 
-Universe provides solution to major Algorithms which are implemented in C++. 
+***Universe provides solution to major Algorithms which are implemented in C++.***
 <br> <br>
 Some of the Algorithms are
 <ul>
