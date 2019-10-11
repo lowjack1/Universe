@@ -1,7 +1,7 @@
 // C++ recursive function to  
 // solve tower of hanoi puzzle  
 #include <bits/stdc++.h> 
-using namespace std; 
+using namespace std;  
   
 void towerOfHanoi(int n, char from_rod, 
                     char to_rod, char aux_rod)  
