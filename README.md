@@ -23,6 +23,7 @@
   <li> <a href="CPP/Algorithm/KMP Algorithm.cpp"> KMP Algorithm </a> </li>
   <li> <a href="CPP/Algorithm/Moore's Voting Algorithm.cpp"> Boyre Moore Voting Algorithm </a> </li>
   <li> <a href="CPP/Algorithm/Sepa Algorithm.cpp"> Sepa Algorithm to generate all Permutation </a> </li>
+  <li> <a href="CPP/Algorithm/tower_of_hanoi.cpp">Algorithm for tower of Hanoi</a></li>
 </ul>
 
 ## Want to Contribute?
